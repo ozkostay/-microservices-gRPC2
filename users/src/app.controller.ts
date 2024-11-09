@@ -21,9 +21,10 @@ export class AppController {
   }
 
   @GrpcMethod('UsersService', 'GetUserBook')
-  userBook(data: findOneDto) {
+  async userBook(data: findOneDto) {
     console.log('GetUserBook', data);
-    return { name: 'usersBook', ...data};
-    // return { name:'name 1211', email: 'asdddd@motext.ru'}
+    const bookTemp = await this.appService.getUserBook(data);
+    return { name: 'usersBook', ...data, book: bookTemp};
+    
   }
 }
