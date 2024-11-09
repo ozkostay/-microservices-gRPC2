@@ -1,10 +1,7 @@
-import { MicroserviceOptions, Transport } from '@nestjs/microservices';
-
-import { AppModule } from './app.module';
 import { NestFactory } from '@nestjs/core';
+import { AppModule } from './app.module';
+import { MicroserviceOptions, Transport } from '@nestjs/microservices';
 import { join } from 'path';
-
-console.log(join(__dirname, 'protos/users.proto'));
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
@@ -12,7 +9,7 @@ async function bootstrap() {
     transport: Transport.GRPC,
     options: {
       package: 'users',
-      protoPath: join(__dirname, '../protos/users.proto'),
+      protoPath: join(__dirname, 'protos/users.proto'),
       url: 'localhost:50051',
     },
   });
@@ -20,3 +17,9 @@ async function bootstrap() {
   await app.listen(3000);
 }
 bootstrap();
+
+// async function bootstrap() {
+//   const app = await NestFactory.create(AppModule);
+//   await app.listen(3000);
+// }
+// bootstrap();

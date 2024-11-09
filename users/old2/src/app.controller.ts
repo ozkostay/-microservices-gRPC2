@@ -16,7 +16,7 @@ export class AppController {
   @GrpcMethod('UsersService', 'GetUser')
   findOne(data: findOneDto) {
     console.log(data);
-    return data;
-    // return { name:'name 1211', email: 'asdddd@motext.ru'}
+    // return data;
+    return { name:'name 1211', email: 'asdddd@motext.ru'}
   }
 }
