@@ -1,6 +1,6 @@
 import { Controller, Get } from '@nestjs/common';
 import { AppService } from './app.service';
-import { MessagePattern, Payload } from '@nestjs/microservices';
+import { GrpcMethod, MessagePattern, Payload } from '@nestjs/microservices';
 
 @Controller()
 export class AppController {
@@ -10,10 +10,9 @@ export class AppController {
   // getHello(): string {
   //   return this.appService.getHello();
   // }
-
-  @MessagePattern('books.findAll')
-  findeAll(@Payload() pl: any){
-    console.log('Pl', pl);
-    return this.appService.findAll();
+  @GrpcMethod('BooksService', 'GetBook')
+  findOne(data: any) {
+    console.log(data);
+    return { name: 'books', ...data };
   }
 }

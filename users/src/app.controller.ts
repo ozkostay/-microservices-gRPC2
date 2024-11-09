@@ -15,8 +15,15 @@ export class AppController {
 
   @GrpcMethod('UsersService', 'GetUser')
   findOne(data: findOneDto) {
-    console.log(data);
-    return data;
+    
+    return { name: 'users', ...data};
+    // return { name:'name 1211', email: 'asdddd@motext.ru'}
+  }
+
+  @GrpcMethod('UsersService', 'GetUserBook')
+  userBook(data: findOneDto) {
+    console.log('GetUserBook', data);
+    return { name: 'usersBook', ...data};
     // return { name:'name 1211', email: 'asdddd@motext.ru'}
   }
 }

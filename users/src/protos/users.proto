@@ -4,6 +4,7 @@ package users;
 
 service UsersService {
   rpc GetUser(GetUserRequest) returns (GetUserResponse) {}
+  rpc GetUserBook(GetUserBookRequest) returns (GetUserBookResponse) {}
   rpc CreateUser(CreateUserRequest) returns (CreateUserResponse) {}
 }
 
@@ -14,6 +15,16 @@ message GetUserRequest {
 message GetUserResponse {
   string name = 1;
   string email = 2;
+}
+
+message GetUserBookRequest {
+  string email = 1;
+}
+
+message GetUserBookResponse {
+  string name = 1;
+  string email = 2;
+  string book = 3;
 }
 
 message CreateUserRequest {
