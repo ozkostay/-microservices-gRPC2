@@ -23,23 +23,10 @@ export class UsersController {
     return this.usersService.GetUser({ email: 'ozkostay@mail.com' }); 
   }
 
-  // @Get('bridge')
-  // bridgeToBooks() {
-  //   return this.usersService.bridgeToBooks();
-  // }
-
-  // @Get(':id')
-  // findOne(@Param('id') id: string) {
-  //   return this.usersService.findOne(+id);
-  // }
-
-  // @Patch(':id')
-  // update(@Param('id') id: string, @Body() updateUserDto: UpdateUserDto) {
-  //   return this.usersService.update(+id, updateUserDto);
-  // }
-
-  // @Delete(':id')
-  // remove(@Param('id') id: string) {
-  //   return this.usersService.remove(+id);
-  // }
+  @Get('bridge')
+  bridgeToBooks() {
+    console.log('API user-api controller');
+  
+    return this.usersService.GetUserBook({ email: 'ozkostay@mail.com' }); 
+  }
 }
